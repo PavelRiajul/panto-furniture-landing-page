@@ -1,3 +1,5 @@
+import { useState } from "react"
+import { FaTimes } from "react-icons/fa"
 import { FaBagShopping, FaBars } from "react-icons/fa6"
 import { Link, NavLink } from "react-router"
 
@@ -7,12 +9,12 @@ const navObj =[
     {path:"/about",label:"About us"},
     {path:"/contact",label:"Contact"},
 ]
-const NavItems = () =>{
+const NavItems = ({toggleMenu}) =>{
     return(
         <ul className="flex flex-col md:flex-row items-center md:space-x-8 gap-8">
             {
                 navObj.map((item,index)=>(
-                    <li key={index}>
+                    <li key={index} onClick={toggleMenu}>
                         <NavLink to={item.path}
                         className={({isActive})=>
                             isActive ? "text-primary font-bold" : "hover:text-primary"
@@ -26,19 +28,32 @@ const NavItems = () =>{
 }
 
 const Navbar = () => {
+   const [isMenuOpen,setIsMenuOpen] = useState(false);
+   const toggleMenu = () =>{
+    setIsMenuOpen(prevState => !prevState)
+   }
   return (
     <header>
       <nav className="container mx-auto max-w-screen-2xl flex justify-between items-center px-4 py-6">
         {/* logo */}
         <Link to={"/"} className="font-bold">Logo</Link>
         {/* hamburger menu for mobile */}
-        <div className="md:hidden text-xl cursor-pointer hover:text-primary ">
-            <FaBars/>
+        <div onClick={toggleMenu} className="md:hidden text-xl cursor-pointer hover:text-primary ">
+            {
+                isMenuOpen ? null :  <FaBars/>
+            }
         </div>
         {/* desktop menu items */}
         <div className="hidden md:flex">
             <NavItems/>
         </div>
+        {/* mobile menu items */}
+         <div className={`fixed top-0 left-0 w-full h-screen bg-black bg-opacity-80 flex flex-col justify-center items-center space-y-8 text-white transition-transform transform ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'} md:hidden`}>
+            <div className=" absolute top-4 right-4 text-xl  cursor-pointer" onClick={toggleMenu}>
+                <FaTimes/>
+            </div>
+            <NavItems toggleMenu={toggleMenu}/>
+         </div>
         {/* cart icon */}
         <div className="hidden md:block cursor-pointer relative">
             <FaBagShopping className="text-xl"/>
