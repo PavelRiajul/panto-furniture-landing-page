@@ -29,5 +29,4 @@ const TooltipButton = ({position='bottom',colors=['bg-red-700','bg-green-700','b
    
   )
 }
-
 export default TooltipButton
