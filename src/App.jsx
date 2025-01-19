@@ -1,3 +1,4 @@
+import { Outlet } from "react-router"
 import Navbar from "./components/Navbar"
 import Routing from "./utils/routing"
 
@@ -7,6 +8,10 @@ const App = () => {
     <div>
       <Navbar/>
       <Routing/>
+      <main className="min-h-screen">
+        <Outlet/>
+      </main>
+      <footer>Footer</footer>
     </div>
   )
 }

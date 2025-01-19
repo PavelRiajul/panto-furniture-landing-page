@@ -33,7 +33,7 @@ const Navbar = () => {
     setIsMenuOpen(prevState => !prevState)
    }
   return (
-    <header>
+    <header className="fixed top-0 left-0 right-0 z-10 transition duration-300 ease-in-out text-white">
       <nav className="container mx-auto max-w-screen-2xl flex justify-between items-center px-4 py-6">
         {/* logo */}
         <Link to={"/"} className="font-bold">Logo</Link>
