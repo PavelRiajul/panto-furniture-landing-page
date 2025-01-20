@@ -8,7 +8,6 @@ import { ThemeContext } from "../../context/ThemeContext"
 
 const Hero = () => {
    const {isDarkMode,toggleTheme} = useContext(ThemeContext);
-   console.log(isDarkMode)
   return (
     <section className="h-screen relative bg-cover bg-center text-white" style={{backgroundImage:`url(${bannerImg})`}}>
         <div className="text-center pt-24 px-2 md:pt-44 space-y-6 md:w-1/2 mx-auto ">

@@ -1,9 +1,12 @@
 import { FiPlus } from "react-icons/fi"
+import {useContext} from 'react'
 import Rating from "../../components/Rating"
 import { getImgUrl } from "../../utils/getImageURL"
+import {CartContext} from "../../context/CartContext"
 
 
-const ProductCard = ({product}) => {
+const ProductCard = ({product}) => { 
+     const {addToCart} = useContext(CartContext);
   return (
     <div>
         <div className="bg-[#fafafa]">
@@ -15,7 +18,11 @@ const ProductCard = ({product}) => {
             <Rating rating={product.rating}/>
             <div className="mt-5 flex justify-between">
                 <p className="text-secondary dark:text-white font-bold text-lg"><sup>$</sup>{product.price}</p>
-                <button className="bg-secondary text-white p-2 rounded-full hover:bg-black/55">
+                <button
+                onClick={()=>{
+                    addToCart(product)
+                }}
+                 className="bg-secondary text-white p-2 rounded-full hover:bg-black/55">
                     <FiPlus/>
                 </button>
             </div>

@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { FaTimes } from "react-icons/fa"
 import { FaBagShopping, FaBars } from "react-icons/fa6"
 import { Link, NavLink } from "react-router"
+import { CartContext } from "../context/CartContext"
 
 const navObj =[
     {path:"/",label:"Furniture"},
@@ -47,6 +48,8 @@ const Navbar = () => {
             window.addEventListener('scroll',handleScroll);
         }
     },[])
+    // cart items from context
+    const {cartCount} = useContext(CartContext)
   return (
     <header className={`fixed top-0 left-0 right-0 z-10 dark:text-black transition duration-300 ease-in-out ${isScrolled ? "bg-white shadow-sm" : "bg-transparent text-white"}`}>
       <nav className="container mx-auto max-w-screen-2xl flex justify-between items-center px-4 py-6">
@@ -73,7 +76,7 @@ const Navbar = () => {
         <div className="hidden md:block cursor-pointer relative">
             <FaBagShopping className="text-xl"/>
             <sup className="absolute top-0 -right-3 bg-primary text-white w-5 h-5 rounded-full flex justify-center items-center text-xs">
-                0
+                {cartCount}
             </sup>
         </div>
       </nav>
