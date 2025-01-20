@@ -1,6 +1,7 @@
 import { Outlet } from "react-router"
 import Navbar from "./components/Navbar"
 import Routing from "./utils/routing"
+import Footer from "./components/Footer"
 
 
 const App = () => {
@@ -8,10 +9,10 @@ const App = () => {
     <div>
       <Navbar/>
       <Routing/>
-      <main className="min-h-screen">
+      <main>
         <Outlet/>
       </main>
-      <footer>Footer</footer>
+      <Footer/>
     </div>
   )
 }
