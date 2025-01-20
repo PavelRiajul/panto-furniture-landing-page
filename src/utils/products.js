@@ -40,7 +40,8 @@ export const products = [
     imageUrl: "chair-5.png",
     rating: 4.5,
   },
-
+ 
+  
   // Beds
   {
     id: 6,
