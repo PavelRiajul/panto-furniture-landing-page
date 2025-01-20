@@ -48,7 +48,7 @@ const Navbar = () => {
         }
     },[])
   return (
-    <header className={`fixed top-0 left-0 right-0 z-10 transition duration-300 ease-in-out ${isScrolled ? "bg-white shadow-sm" : "bg-transparent text-white"}`}>
+    <header className={`fixed top-0 left-0 right-0 z-10 dark:text-black transition duration-300 ease-in-out ${isScrolled ? "bg-white shadow-sm" : "bg-transparent text-white"}`}>
       <nav className="container mx-auto max-w-screen-2xl flex justify-between items-center px-4 py-6">
         {/* logo */}
         <Link to={"/"} className="font-bold">Panto</Link>
